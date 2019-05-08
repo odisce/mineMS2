@@ -197,8 +197,11 @@ chooseVerticesLosses <- function(lf,oformula,dags,mzv,vrdbe,atoms,subformula = N
   bloss <- NULL
   bpartial <- 0
   bsolo <- 0
+  bf <- numeric(0)
+  pok <- numeric(0)
   if((length(oformula)==0)|((length(oformula)==1)&&is.na(oformula))){
     bloss <- 1:length(lf)
+    pok <- 1:length(lf)
   }else{
     pok <- 1:length(lf)
     ####If a possible subformula is furnished, the possible formula of the vertices are restricted.
@@ -227,13 +230,15 @@ chooseVerticesLosses <- function(lf,oformula,dags,mzv,vrdbe,atoms,subformula = N
   
   ###We keep the one the closest to the furnished mass.
   if(length(bloss)>1){
-    m_atoms <- getAtomsMass(atoms)
+    m_atoms <- getAtomsMass(names(atoms))
+    
     vmz <- lf@formula[bloss,] %*% m_atoms
     rdbe <- calcRDBE_raw(lf@formula[bloss,],vrdbe)
     
     ####Now we split the value of t
     
     bloss <- bloss[which.min(abs(vmz-mzv)*10^6/mzv+abs(rdbe))]
+    if(!exists("bf")) browser()
     bpartial <- as.numeric(as.numeric(bf[bloss])==nrow(lf@formula))
   }else{
     bsolo <- 1

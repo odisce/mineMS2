@@ -9,7 +9,8 @@
   edgeLabels = NULL, dags = NULL, nodeLabel = c("default", "label"),
   edgeLabel = c("formula", "mass", "none"), atoms = c("C", "H", "O",
   "N", "S", "P"), formula = NA_character_, mzdigits = 3,
-  vertex_size = 55, subNodes = NULL, tkplot = FALSE, ...)
+  vertex_size = 55, vertex_label_cex = 0.7, subNodes = NULL,
+  tkplot = FALSE, ...)
 }
 \arguments{
 \item{y}{= NULL,}
@@ -19,6 +20,10 @@
 \item{mzdigits}{= 3,}
 
 \item{vertex_size}{= 30,}
+
+\item{vertex_label_cex}{= 0.7,}
+
+\item{subNodes}{= NULL,}
 
 \item{tkplot}{= FALSE,}
 

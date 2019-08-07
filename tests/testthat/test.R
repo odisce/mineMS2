@@ -57,10 +57,10 @@ test_basic_processing <- function() {
                         file = path_output_graph)
 
     # Compare outputs
-    print(tools::md5sum(path_output_graph))
     print(tools::md5sum(path_expected_output_graph))
-    testthat::expect_equal(tools::md5sum(path_output_graph),
-                           tools::md5sum(path_expected_output_graph))
+    print(tools::md5sum(path_output_graph))
+    testthat::expect_equal(unname(tools::md5sum(path_output_graph)),
+                           unname(tools::md5sum(path_expected_output_graph)))
 }
 
 # Test MGF filename {{{1

@@ -51,16 +51,16 @@ test_basic_processing <- function() {
                                               net_gnps,
                                               patterns)
     testthat::expect_is(annotated_net, 'igraph')
-    
+
     igraph::write_graph(graph = annotated_net,
                         format = "graphml",
                         file = path_output_graph)
-    
+
     # Compare outputs
-#    testthat::expect_equal(tools::md5sum(path_output_graph),
-#                           tools::md5sum(path_expected_output_graph))
-    # XXX Impossible to compare, since the values of "v_id" tags change all the
-    # time.
+    print(tools::md5sum(path_output_graph))
+    print(tools::md5sum(path_expected_output_graph))
+    testthat::expect_equal(tools::md5sum(path_output_graph),
+                           tools::md5sum(path_expected_output_graph))
 }
 
 # Test MGF filename {{{1
